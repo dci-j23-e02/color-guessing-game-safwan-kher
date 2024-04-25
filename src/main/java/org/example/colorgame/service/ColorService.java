@@ -13,12 +13,22 @@ public class ColorService {
   private Random random = new Random();
   private  String currentColor;
 
+
+  public List<String> getColors() {
+    return colors;
+  }
+
+  public String getCurrentColor() {
+    return currentColor;
+  }
+
   /**
    * Randomly selects a color from the list
    * @return  the selected color
    * */
   public String getRandomColor(){
     currentColor = colors.get(random.nextInt(colors.size()));
+    System.out.println(currentColor);
     return currentColor;
   }
 
