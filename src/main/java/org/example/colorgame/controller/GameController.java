@@ -28,6 +28,8 @@ public class GameController {
 @GetMapping("/guess")
   public String guess(@RequestParam String guess,Model model){
   boolean isCorrect = colorService.validateGuess(guess);
+  model.addAttribute("correctColor",colorService.getCurrentColor().getName() );
+  model.addAttribute("guess", guess);
   model.addAttribute("message",
       isCorrect ? "Correct! The color was"+ colorService.getCurrentColor().getName() : "Incorrect! Try again.");
 
