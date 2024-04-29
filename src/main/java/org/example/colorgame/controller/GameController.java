@@ -1,6 +1,7 @@
 package org.example.colorgame.controller;
 
 
+import org.example.colorgame.model.Color;
 import org.example.colorgame.service.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,9 @@ public class GameController {
 
 @GetMapping("/")
   public String startGame(Model model){
-  String color = colorService.getRandomColor();
-  model.addAttribute("currentColor", color);
-  model.addAttribute("colors", colorService.getColors());
+  Color color = colorService.getRandomColor();
+  model.addAttribute("currentColor", color.getName());
+  model.addAttribute("colors", colorService.getColorNames());
   return  "index";
 }
 
@@ -28,7 +29,7 @@ public class GameController {
   public String guess(@RequestParam String guess,Model model){
   boolean isCorrect = colorService.validateGuess(guess);
   model.addAttribute("message",
-      isCorrect ? "Correct! The color was"+ colorService.getCurrentColor() : "Incorrect! Try again.");
+      isCorrect ? "Correct! The color was"+ colorService.getCurrentColor().getName() : "Incorrect! Try again.");
 
   return  "result";
 

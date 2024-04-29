@@ -1,5 +1,6 @@
 package org.example.colorgame.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -22,6 +23,14 @@ public class ColorService {
 
   public List<Color> getColors() {
     return colorRepository.findAll();
+  }
+
+  public List<String> getColorNames() {
+    List<String> colorNames = new ArrayList<>();
+    for (Color color: getColors()) {
+      colorNames.add(color.getName());
+    }
+    return colorNames;
   }
 
   public Color getCurrentColor() {
