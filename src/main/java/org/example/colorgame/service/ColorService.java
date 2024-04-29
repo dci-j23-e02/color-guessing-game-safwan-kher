@@ -3,19 +3,25 @@ package org.example.colorgame.service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import org.example.colorgame.model.Color;
+import org.example.colorgame.repository.ColorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ColorService {
 
+  @Autowired
+  private ColorRepository colorRepository;
+
   // Attributes
-  private List<String> colors = Arrays.asList("Red", "Blue", "Green", "Yellow", "Orange", "Purple");
+  // private List<String> colors = Arrays.asList("Red", "Blue", "Green", "Yellow", "Orange", "Purple");
   private Random random = new Random();
-  private  String currentColor;
+  private  Color currentColor;
 
 
-  public List<String> getColors() {
-    return colors;
+  public List<Color> getColors() {
+    return colorRepository.findAll();
   }
 
   public String getCurrentColor() {
