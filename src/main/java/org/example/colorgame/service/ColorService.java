@@ -24,7 +24,7 @@ public class ColorService {
     return colorRepository.findAll();
   }
 
-  public String getCurrentColor() {
+  public Color getCurrentColor() {
     return currentColor;
   }
 
@@ -32,7 +32,9 @@ public class ColorService {
    * Randomly selects a color from the list
    * @return  the selected color
    * */
-  public String getRandomColor(){
+  public Color getRandomColor(){
+    // colors list
+    List<Color> colors = getColors();
     currentColor = colors.get(random.nextInt(colors.size()));
     System.out.println(currentColor);
     return currentColor;
@@ -43,7 +45,7 @@ public class ColorService {
    * @return  true if the guess is correct, otherwise false
    * */
   public boolean validateGuess(String guess){
-    return guess!=null && guess.equalsIgnoreCase(currentColor);
+    return guess!=null && guess.equalsIgnoreCase(currentColor.getName());
   }
 
 }
