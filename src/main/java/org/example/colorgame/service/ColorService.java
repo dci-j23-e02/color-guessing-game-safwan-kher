@@ -45,7 +45,7 @@ public class ColorService {
     // colors list
     List<Color> colors = getColors();
     currentColor = colors.get(random.nextInt(colors.size()));
-    System.out.println(currentColor);
+    System.out.println(currentColor.getName());
     return currentColor;
   }
 
